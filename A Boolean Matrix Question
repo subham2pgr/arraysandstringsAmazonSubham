@@ -1,0 +1,74 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+#define R 3
+#define C 4
+void modifyMatrix(bool mat[R][C])
+{
+    bool row[R];
+    bool col[C];
+    for(int i=0;i<R;i++)
+    {
+        row[i]=0;
+    }
+    for(int j=0;j<C;j++)
+    {
+        col[j]=0;
+    }
+    for(int i=0;i<R;i++)
+    {
+        for(int j=0;j<C;j++)
+        {
+            if(mat[i][j]==1)
+            {
+                row[i]=1;
+                col[j]=1;
+            }
+        }
+    }
+    for(int i=0;i<R;i++)
+    {
+        for(int j=0;j<C;j++)
+        {
+            if(row[i]==1||col[j]==1)
+            {
+                mat[i][j]=1;
+            }
+        }
+    }
+}
+void printMatrix(bool mat[R][C])
+{
+    for(int i=0;i<R;i++)
+    {
+        for(int j=0;j<C;j++)
+        {
+            cout<<mat[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+}
+int main() 
+{ 
+    bool mat[R][C] = { {1, 0, 0, 1}, 
+                       {0, 0, 1, 0}, 
+                       {0, 0, 0, 0}}; 
+  
+    cout << "Input Matrix \n"; 
+    printMatrix(mat); 
+  
+    modifyMatrix(mat); 
+  
+    cout<<"Matrix after modification \n"; 
+    printMatrix(mat); 
+  
+    return 0; 
+} 
